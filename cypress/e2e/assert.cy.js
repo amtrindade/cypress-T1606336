@@ -54,5 +54,51 @@ describe('Trabalhando com asserções', () => {
         expect(float).to.be.closeTo(10.5, 0.1);
     });
 
-    
+    it('Validações do tipo Array', () => {
+
+        const arrInt = [1, 2, 3, 4, 5];
+
+        expect(arrInt).to.be.an('array');
+        expect(arrInt).to.have.length(5);
+        expect(arrInt).to.include.members([1, 5, 4]);
+        expect(arrInt).to.not.include.members([6, 7]);
+        expect(arrInt[1]).to.be.equal(2);
+
+        const arrStr = ['Java', 'JavaScript', 'Python', 'Cypress'];
+        
+        expect(arrStr).to.be.an('array');
+        expect(arrStr).to.have.length(4);
+        expect(arrStr).to.include.members(['JavaScript', 'Cypress']);
+        expect(arrStr).to.not.include.members(['Ruby', 'PHP']);
+        expect(arrStr[3]).to.be.equal('Cypress');
+    });
+
+    it('Validações do tipo Objeto', () => {
+
+        const pessoa = {
+            nome: 'Antônio Trindade',
+            idade: 35,
+            profissao: 'Analista de Testes',
+            empresa: 'Empresa X'
+        };
+        
+        expect(pessoa).to.be.an('object');
+        expect(pessoa).to.have.property('nome').equal('Antônio Trindade');
+        expect(pessoa).to.have.property('idade').equal(35);
+        expect(pessoa).to.have.property('profissao').equal('Analista de Testes');
+        expect(pessoa).to.have.property('empresa').equal('Empresa X');
+
+        const pessoa2 = {
+            nome: 'Antônio Trindade',
+            idade: 35,
+            profissao: 'Analista de Testes',
+            empresa: 'Empresa X'
+        };
+
+        //Compara dois objetos
+        expect(pessoa2).to.be.not.equal(pessoa);
+        //Compara o conteúdo das propriedades dos objetos
+        expect(pessoa2).to.be.deep.equal(pessoa);      
+    });
+
 });
