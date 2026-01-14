@@ -42,7 +42,7 @@ describe('Trabalhando com elementos da web', () => {
         cy.get('[name="radioGroup1"]').eq(3).should('not.be.checked')
     })
 
-    it.only('Interagindo com checkboxes', () => {
+    it('Interagindo com checkboxes', () => {
 
         cy.get('[name="chkbox"]').should('have.length', 4)
         cy.get('[name="chkbox"]').check('Check 1').should('be.checked')
@@ -54,6 +54,14 @@ describe('Trabalhando com elementos da web', () => {
         cy.get('[name="chkbox"]').check().should('be.checked') 
         //Desmarca todos os checkboxes
         cy.get('[name="chkbox"]').uncheck().should('not.be.checked')
+    })
+
+    it('Interagindo com selects', () => {
+        cy.get('[name="dropdownlist"]').select('item2')
+        cy.get('[name="dropdownlist"] > option[value="item2"]').should('be.selected')
+
+        cy.get('[name="dropdownlist"] option').should('have.length', 10)
+        cy.get('[name="dropdownlist"] option').eq(0).should('have.text', 'Item 1')
     })
 
 })
