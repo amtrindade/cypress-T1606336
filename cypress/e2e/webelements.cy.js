@@ -22,6 +22,7 @@ describe('Trabalhando com elementos da web', () => {
         cy.get('[name="txtbox2"]')
             .should('be.disabled')
         cy.get('[name="txtbox2"]')
+            .wait(2000)
             .type('Teste', {force: true})
             .should('have.value', 'Teste')
     })
