@@ -3,7 +3,7 @@
 describe('Trabalhando com elementos da web', () => {
     
     beforeEach(() => {
-        cy.visit('https://antoniotrindade.com.br/treinoautomacao/elementsweb.html')
+        cy.visit('/elementsweb.html')
     })
 
     it('Validar o título da página', () => {
@@ -11,7 +11,7 @@ describe('Trabalhando com elementos da web', () => {
         cy.url().should('include', 'elementsweb')
     })
 
-    it('Interagindo com campos de texto', () => {
+    it.only('Interagindo com campos de texto', () => {
         //1. Identifica o elemento
         //2. Interage com o elemento
         //3. Faz uma validação
@@ -64,4 +64,14 @@ describe('Trabalhando com elementos da web', () => {
         cy.get('[name="dropdownlist"] option').eq(0).should('have.text', 'Item 1')
     })
 
+    it('Interagindo com select múltiplo', () => {
+        cy.get('[name="multiselectdropdown"]').select(['item1', 'item3', 'item5'])
+        cy.get('[name="multiselectdropdown"] > option[value="item1"]').should('be.selected')
+        cy.get('[name="multiselectdropdown"] > option[value="item3"]').should('be.selected')
+        cy.get('[name="multiselectdropdown"] > option[value="item5"]').should('be.selected')
+        cy.get('[name="multiselectdropdown"] > option[value="item6"]').should('not.be.selected')
+
+        //TODO ver como fazer a validação da quantidade de itens selecionados
+        //invoke, wrap, then
+    })
 })
