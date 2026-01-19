@@ -50,3 +50,12 @@ describe('Trabalhando com a lista de tarefas', () => {
         })
     })
 })
+
+
+//Ordem e nomeclarura das aspas em javaScritp:
+// 1) `` crase
+// 2) '' as
+// 3) "" duplas
+
+// Exemplo
+// const message = `It's working and I can say "Hello"`;
