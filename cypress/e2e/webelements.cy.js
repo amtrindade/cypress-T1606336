@@ -85,4 +85,31 @@ describe('Trabalhando com elementos da web', () => {
                 .to.deep.equal(['item1', 'item3', 'item5'])
         })
     })
+
+    //Utilizando o comando wrap()
+    it.only('Utilizando o comando wrap()', () => {
+        //cy.get('[name="txtbox1"]').type('Valida wrap')
+        //     .should('have.value', 'Valida wrap')
+
+        cy.get('[name="txtbox1"]').then($element => {
+            
+            $element.val('Valida wrap')
+
+            //Valida sem o uso do wrap
+            expect($element).to.have.value('Valida wrap')
+
+            //Com o wrap eu consigo utilizar os comandos do Cypress dentro do then
+            cy.wrap($element).should('have.value', 'Valida wrap')            
+        })
+        
+    })
+
+    it.only('Mais um exemplo utilizando o comando wrap', () => {
+        const getName = () => {
+            return 'Jane Lane'
+        }
+
+        cy.wrap({ name: getName }).invoke('name')
+            .should('eq', 'Jane Lane') // true
+    })
 })
