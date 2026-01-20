@@ -10,7 +10,7 @@ describe('Trabalhando com a lista de tarefas', () => {
 
     it('Cadastrar nova tarefa', () => {
         cy.get('.todo-list li').should('have.length', 2)
-        cy.get('.new-todo').type(`${newTask}{enter}`)
+        cy.get('[data-test=new-todo]').type(`${newTask}{enter}`)
         //Verifica o tamanho atual da lista
         cy.get('.todo-list li').should('have.length', 3)
         //Verifica se o último item da lista é a tarefa cadastrada

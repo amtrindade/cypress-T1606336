@@ -87,7 +87,7 @@ describe('Trabalhando com elementos da web', () => {
     })
 
     //Utilizando o comando wrap()
-    it.only('Utilizando o comando wrap()', () => {
+    it('Utilizando o comando wrap()', () => {
         //cy.get('[name="txtbox1"]').type('Valida wrap')
         //     .should('have.value', 'Valida wrap')
 
@@ -104,7 +104,7 @@ describe('Trabalhando com elementos da web', () => {
         
     })
 
-    it.only('Mais um exemplo utilizando o comando wrap', () => {
+    it('Mais um exemplo utilizando o comando wrap', () => {
         const getName = () => {
             return 'Jane Lane'
         }
