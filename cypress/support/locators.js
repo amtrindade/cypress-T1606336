@@ -17,7 +17,8 @@ const locators = {
     TF_SEARCH: '#genericFilter',
     BTN_SEARCH: '#serviceLocalList_doSearch',
     TABLE_LOCATIONS: '.odd',
-    BTN_EDIT: '.edit-record-serviceLocal'
+    BTN_EDIT: '.edit-record-serviceLocal',
+    PAGE_CONTENT: '.page-content'
   },
   DETAIL_LOCATION: {
     TF_DESCRIPTION: '#serviceLocal_description',

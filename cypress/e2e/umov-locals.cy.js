@@ -44,7 +44,7 @@ describe('Spec referente as funcionalidades do cadastro de locais', () => {
             cy.get(loc.DETAIL_LOCATION.BTN_SAVE).click()
         })
 
-        it.only('Deve editar um local cadastrado', () => {
+        it('Deve editar um local cadastrado', () => {
             cy.search(nameLocal)
             cy.get(loc.LIST_LOCATIONS.TABLE_LOCATIONS)
                 .contains('td', nameLocal)
@@ -57,5 +57,20 @@ describe('Spec referente as funcionalidades do cadastro de locais', () => {
             cy.search(nameLocal + ' Edit')
             cy.get(loc.LIST_LOCATIONS.TABLE_LOCATIONS).contains('td', nameLocal + ' Edit').should('be.visible')
         })
+
+        it('Deve inativar um local cadastrado', () => {
+            cy.search(nameLocal)
+            cy.get(loc.LIST_LOCATIONS.TABLE_LOCATIONS)
+                .contains('td', nameLocal)
+                .parent()
+                .find(loc.LIST_LOCATIONS.BTN_EDIT)
+                .click()
+            cy.get('#serviceLocal_active').uncheck()
+            cy.get(loc.DETAIL_LOCATION.BTN_SAVE).click()
+            
+            cy.search(nameLocal)
+            cy.get(loc.LIST_LOCATIONS.PAGE_CONTENT).contains('Nothing found to display').should('be.visible')
+        })
+            
     })
 })
