@@ -31,4 +31,31 @@ describe('Spec referente as funcionalidades do cadastro de locais', () => {
 
         cy.get(loc.LIST_LOCATIONS.TABLE_LOCATIONS).contains('td', nameLocal).should('be.visible')
     })
+
+    describe('Testes que dependem do cadastro de um local executado anteriormente', () => {
+        beforeEach(() => {
+            cy.get(loc.LIST_LOCATIONS.BTN_NEW_LOCATION).click()
+            cy.get(loc.DETAIL_LOCATION.TF_DESCRIPTION).type(nameLocal)
+            cy.get(loc.DETAIL_LOCATION.TF_CORPORATE_NAME).type('Empresa Teste Cypress LTDA')
+            cy.get(loc.DETAIL_LOCATION.TF_STREET_TYPE).type('Rua')
+            cy.get(loc.DETAIL_LOCATION.TF_STREET).type('Cypress Street')
+            cy.get(loc.DETAIL_LOCATION.TF_STREET_NUMBER).type('666')
+            cy.get(loc.DETAIL_LOCATION.TF_ZIP_CODE).type('904000-000')
+            cy.get(loc.DETAIL_LOCATION.BTN_SAVE).click()
+        })
+
+        it.only('Deve editar um local cadastrado', () => {
+            cy.search(nameLocal)
+            cy.get(loc.LIST_LOCATIONS.TABLE_LOCATIONS)
+                .contains('td', nameLocal)
+                .parent()
+                .find(loc.LIST_LOCATIONS.BTN_EDIT)
+                .click()
+            cy.get(loc.DETAIL_LOCATION.TF_DESCRIPTION).clear().type(nameLocal + ' Edit')
+            cy.get(loc.DETAIL_LOCATION.BTN_SAVE).click()
+
+            cy.search(nameLocal + ' Edit')
+            cy.get(loc.LIST_LOCATIONS.TABLE_LOCATIONS).contains('td', nameLocal + ' Edit').should('be.visible')
+        })
+    })
 })
