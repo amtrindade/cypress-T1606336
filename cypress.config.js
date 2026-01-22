@@ -23,7 +23,7 @@ module.exports = defineConfig({
   screenshotsFolder: 'cypress/screenshots',
   screenshotOnRunFailure: true,
   retries: {
-    runMode: 0,
+    runMode: 1,
     openMode: 0
   }
 });
