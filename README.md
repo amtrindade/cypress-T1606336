@@ -119,6 +119,11 @@ As configurações principais do Cypress estão em [cypress.config.js](cypress.c
 - **Video**: Gravação de vídeos dos testes
 - **Screenshot**: Captura de screenshots em caso de falha
 
+## Instalação do relatório
+```bash 
+npm i -D cypress-mochawesome-reporter cypress-multi-reporters mocha-junit-reporter
+```
+
 ## Scripts NPM
 
 No arquivo [package.json](package.json), os seguintes scripts estão disponíveis:
